@@ -1,0 +1,37 @@
+'''capital={'France':'Paris','Russia':'Moscow','England':'London','Ireland':'Dublin','Italy':'Rome','Argentina':'Buenos Aires'}
+print(capital['France'])
+print(capital.get('India'))
+#adding a new key value pair
+capital['Austraila']='Cannberra'
+print(capital)
+#get a list of all the keys
+print(capital.keys())
+#get a list of all the values
+print(capital.values())
+#get the length of a list
+print(len(capital))
+#check for something
+print('Russia'in capital)
+#to delete
+del capital['Italy']
+print('Italy' in capital)
+#change
+'line 5'
+for i,j in capital.items():
+    print(i,j)'''
+
+info={'Name':'Mick','Age':'23','City':'Singapore'}
+print(info['Name'])
+info['Occupation']='Student'
+print(info)
+marks=[80,45,78,69,92]
+info['Marks']=marks
+print(info)
+#nested dictionary
+classroom={'Aquiles':{'Age':13,'Marks':[17,19,14,8]},
+           'James':{'Age':13,'Marks':[5,4,12,14,9]}
+           }
+print(classroom['James']['Age'])
+print(classroom['James']['Marks'][4])
+for i in classroom.keys():
+    print(classroom[i])
