@@ -1,0 +1,64 @@
+import pgzrun
+import random
+from time import time
+WIDTH=800
+HEIGHT=700
+end=False
+done=False
+starttime=0
+totaltime=0
+satelitelists=[]
+lines=[]
+nextsatelite=0
+totalsatelites=10
+def objects():
+    global starttime
+    for i in range(totalsatelites):
+        satelite=Actor('satelite')
+        satelite.pos=random.randint(0,800),random.randint(0,700)
+        satelitelists.append(satelite)
+    starttime=time()
+def draw():
+    global totaltime,end
+    screen.blit('space',(0,0))
+    num=1
+    for i in satelitelists:
+        i.draw()
+        screen.draw.text(str(num),(i.pos[0],i.pos[1]+20))
+        num+=1
+    for i in lines:
+        if end==False:
+            screen.draw.line(i[0],i[1],'green')
+        elif end==True:
+            pass
+    if nextsatelite<totalsatelites and end==False:
+        totaltime=time()-starttime
+        totaltime=round(totaltime,2)
+        screen.draw.text(str(totaltime),(0,0),fontsize=25)
+    else:
+         screen.draw.text(str(totaltime),(0,0),fontsize=25)
+    if end==True:
+        screen.draw.text('You Lose',(350,20),fontsize=40)
+    if done==True:
+        screen.draw.text('you win',(350,20),fontsize=40)
+def timer():
+    global done,end,nextsatelite
+    if nextsatelite==10:
+        done=True
+    else:
+        end=True
+def update():
+    pass
+def on_mouse_down(pos):
+    global totalsatelites,nextsatelite,satelitelists,lines
+    if nextsatelite<totalsatelites:
+        if satelitelists[nextsatelite].collidepoint(pos):
+            if nextsatelite:
+                lines.append((satelitelists[nextsatelite-1].pos,satelitelists[nextsatelite].pos))
+            nextsatelite+=1 
+        else:
+            lines=[]
+            nextsatelite=0
+objects()
+clock.schedule(timer,20)
+pgzrun.go()
