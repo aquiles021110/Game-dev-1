@@ -38,7 +38,7 @@ def draw():
     screen.draw.textbox(readqs[0],question_box,color='black')
     index=1
     for i in boxes:
-        screen.draw.textbox(readqs[index],i,color='black')
+        screen.draw.textbox(readqs[index].strip,i,color='black')
         index+=1
 def scrolling():
     scroll_box.x-=2
@@ -47,15 +47,45 @@ def scrolling():
 def update():
     scrolling()
 def text():
-    global total_questions
+    global total_questions,quest
     with open('questions.txt','r')as f:
         for i in f:
             quest.append(i)
             total_questions+=1
 def read():
-    global current_question
+    global current_question,quest
     current_question+=1
     return quest.pop(0).split('|')
+def on_mouse_down(pos):
+    index=1
+    for i in boxes:
+        if i.collidepoint(pos):
+            if index is int(readqs[5]):
+                corrrectawnser() 
+            else:
+                done()
+        index+=1
+def corrrectawnser():
+    global quest,total_time,score,readqs
+    score+=1
+    if quest:
+        readqs=read()
+        total_time=10
+    else:
+        done()
+def done():
+    global game_over,score,nextqs,total_time
+    msg=f'Game over, you got:{score} questions correct!'
+    nextqs=[msg,'~','~','~','~',5]
+    total_time=0
+    game_over=True
+def timer():
+    global total_time
+    if total_time:
+        total_time-=1
+    else:
+        done()
 text()
 readqs=read()
+clock.schedule_interval(timer,1)
 pgzrun.go()
