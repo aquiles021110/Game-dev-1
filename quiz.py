@@ -38,7 +38,7 @@ def draw():
     screen.draw.textbox(readqs[0],question_box,color='black')
     index=1
     for i in boxes:
-        screen.draw.textbox(readqs[index].strip,i,color='black')
+        screen.draw.textbox(readqs[index].strip(),i,color='black')
         index+=1
 def scrolling():
     scroll_box.x-=2
@@ -65,6 +65,8 @@ def on_mouse_down(pos):
             else:
                 done()
         index+=1
+    if skip_box.collidepoint(pos):
+        skip()
 def corrrectawnser():
     global quest,total_time,score,readqs
     score+=1
@@ -83,6 +85,13 @@ def timer():
     global total_time
     if total_time:
         total_time-=1
+    else:
+        done()
+def skip():
+    global readqs,timer
+    if quest and not game_over:
+        readqs=read()
+        timer=10
     else:
         done()
 text()
