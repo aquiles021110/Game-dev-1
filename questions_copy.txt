@@ -1,0 +1,11 @@
+Which of these are the oldest?|Planes|Phones|Lightbulbs|Cars|2
+Which is the smallest country?| Singapore |Monaco|Paris|Vatican City|4
+What is the square root of 49?|35|57|7|14|3
+Is lift based on speed?|Yes|No|Not just|Lift is magic|2
+When is the next leap year?|2025|2038|2028|2032|3
+How do Airlines board people?|Front to Back|Back to Front|By class|By seat|3
+What is faster|100kph|100m/s|100mph|100Mach|4
+Which country has the highest GDP per capita?|Luxembourg|USA|China|UAE|1
+Which planet is a dwarf planet?|Pluto|Venus|Neptune|Mercury|1
+How many french departments are there?|100|72|96|6|3
+How many tube lines does London have?|4|7|20|11|4 
